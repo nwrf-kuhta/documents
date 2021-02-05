@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ch.1-4</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div id="result"></div>
+        <script type="module">
+          import { CA1 } from "./ca.js";
+
+          function addResult(ca) {
+            const result = document.getElementById('result');
+            for (let i = 0; i < ca.states.length; i++) {
+              const cell = document.createElement('div');
+              cell.classList.add('cell', ca.states[i] === 0 ? 'dead' : 'live');
+              result.appendChild(cell);
+            }
+          }
+
+          const ca1 = new CA1({
+            rule: 30,
+            states: [
+              0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+              1,
+              0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+            ]
+          });
+          for (let i = 0; i <= 20; i++) {
+            addResult(ca1);
+            ca1.next();
+          }
+        </script>
+    </body>
+</html>

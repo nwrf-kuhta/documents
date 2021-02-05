@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ch.1 学び始める前に</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div id="result"></div>
+        <script type="module">
+          import { CA1Rule90, CA1 } from "./ca.js";
+
+          function addResult(ca) {
+            const result = document.getElementById('result');
+            for (let i = 0; i < ca.states.length; i++) {
+              const cell = document.createElement('div');
+              if (ca.states[i] === '0') {
+                cell.classList.add('cell', 'dead');
+              } else {
+                cell.classList.add('cell', 'live');
+              }
+              result.appendChild(cell);
+            }
+          }
+
+          const ca1 = new CA1Rule90('00000000000000000000100000000000000000000');
+          for (let i = 0; i <= 20; i++) {
+            addResult(ca1);
+            ca1.next();
+          }
+        </script>
+    </body>
+</html>
